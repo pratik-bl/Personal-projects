@@ -4,7 +4,7 @@ Single-notebook analysis that cleans a children’s daily-activity dataset, engi
 
 ## What this notebook does
 - **Load & clean**
-  - Reads the 24-hour recall activity dataset (CSV/XLSX) from `data/`.
+  - Reads the 24-hour recall activity dataset (XLSX) from `data/`.
   - Converts minutes→hours and merges duplicate hour/minute columns.
   - Keeps core variables: `Active_Video_Game_Hours`, `Non_Active_Video_Game_Hours`, `Sports_Hours`, `Walking_Biking_Hours`, `Household_Chores_Hours`, `Physical_Education_Hours`, plus `Week`/phase labels. :contentReference[oaicite:0]{index=0}
 
