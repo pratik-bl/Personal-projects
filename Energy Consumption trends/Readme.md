@@ -23,4 +23,3 @@ This project uses the dataset from the following repository:
 
 Original dataset: https://github.com/owid/energy-data/tree/master
 
-I did not include the full dataset in this repo. Please download it from the source above and place the CSV(s) here: data/raw/owid-energy-data.csv
