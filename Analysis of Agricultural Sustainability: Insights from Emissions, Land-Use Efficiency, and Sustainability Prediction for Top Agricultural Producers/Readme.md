@@ -1,39 +1,40 @@
 # Data Driven Analysis of Agricultural Sustainability: Insights from Emissions, Land-Use Efficiency, and Sustainability Prediction for Top Agricultural Producers
 
-Single-notebook analysis using agricultural land area and agro-food CO₂ emissions data. The notebook cleans both datasets, explores trends, and builds tidy summary tables and charts.
+Single-notebook analysis using agricultural land area and agro-food CO₂ emissions. The notebook cleans both datasets, aligns them by country and year, explores trends, builds tidy summary tables, and saves a few clear charts.
 
-## Datasets used
-Place these files in `data/raw/`:
-
-- `Agrofood_co2_emission.csv`
-- `Transformed_Sorted_Agricultural_Land_Area.csv`
+## Datasets
+Place these files in `data/`:
+- `data/Agrofood_co2_emission.csv`
+- `data/Transformed_Sorted_Agricultural_Land_Area.csv`
 
 If your filenames differ, update the first cell in the notebook.
 
 ## What the notebook does
 1) **Load and clean**
    - Reads both CSVs
-   - Fixes types, trims column names, standardises country and year
-   - Handles missing values and outliers
+   - Standardises column names and types
+   - Normalises country names and ensures `country` and `year` keys exist
+   - Handles missing values with simple and transparent rules
 
 2) **Transform**
-   - Normalises units where needed
-   - Creates per-capita or per-hectare indicators
-   - Aligns country and year keys for joining
+   - Derives indicators such as:
+     - CO₂ per hectare (agro-food emissions divided by agricultural land area)
+     - Optional per-capita metrics if population is available
+   - Optionally winsorises or clips extreme outliers
 
 3) **Join and summarise**
-   - Left or inner join on `country` and `year`
-   - Builds grouped summaries by region or income group
-   - Produces correlation and trend views
+   - Joins datasets on `country` and `year`
+   - Creates grouped summaries (for example by region or income group if available)
+   - Produces correlation and trend tables
 
 4) **Visualise**
-   - Time-series trends of CO₂ emissions vs agricultural land area
-   - Scatter plots with fitted lines
-   - Ranked leaderboards by latest year
+   - Time-series trends of emissions and land area
+   - Scatter of CO₂ vs land area with a fitted line
+   - Ranked leaderboard for the latest year
 
 5) **Export**
-   - Saves cleaned and joined tables
-   - Saves key figures to `reports/figures/`
+   - Saves cleaned and joined tables to `artifacts/`
+   - Saves figures to `reports/figures/` (if `plt.savefig(...)` is used)
 
 ## Files in this repo
 - `Data_analytics_Project.ipynb`  ← open and run
