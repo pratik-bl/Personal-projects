@@ -1,4 +1,4 @@
-# Data Analytics Project
+# Data Driven Analysis of Agricultural Sustainability: Insights from Emissions, Land-Use Efficiency, and Sustainability Prediction for Top Agricultural Producers
 
 Single-notebook analysis using agricultural land area and agro-food CO₂ emissions data. The notebook cleans both datasets, explores trends, and builds tidy summary tables and charts.
 
