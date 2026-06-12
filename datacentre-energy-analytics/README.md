@@ -1,6 +1,8 @@
 # Data Centres as Infrastructures of Power
 ### Energy, Inequality, and Discourse in the Cloud & AI Era
 
+![CI](https://github.com/pratik-bl/Personal-projects/actions/workflows/ci.yml/badge.svg)
+
 MSc dissertation project (University of Warwick, 2025) combining **web scraping, multi-source data engineering, geospatial & exploratory analysis, NLP sentiment mining, gradient-boosted surrogate modelling, and demand reconstruction** to study the energy footprint and public discourse around the world's data centres.
 
 📄 Full write-up: [`docs/dissertation.pdf`](docs/dissertation.pdf) · All charts & tables: [`docs/analysis_visualisations_and_tables.docx`](docs/analysis_visualisations_and_tables.docx)
@@ -50,6 +52,8 @@ MSc dissertation project (University of Warwick, 2025) combining **web scraping,
 ## Repository layout
 
 ```
+├── src/dc_energy/    # Installable package: cleaners, density analysis, power anchors, LightGBM surrogate + CLI
+├── tests/            # pytest suite (runs in CI against the bundled sample data)
 ├── notebooks/        # Ordered analysis pipeline (01 → 07)
 ├── data/
 │   ├── processed/    # Tidy Parquet tables produced by notebook 02 (full files)
@@ -97,11 +101,20 @@ Raw inputs total several GB, so this repo ships **full processed Parquet tables*
 ```bash
 git clone <repo-url>
 cd datacentre-energy-analytics
-pip install -r requirements.txt
-jupyter lab
+pip install -e ".[ml,dev]"
+pytest                      # 16 tests, all runnable offline against bundled samples
 ```
 
-Run notebooks in numerical order. Notebooks 03 and 06–07 run against the bundled processed/sample data; 01–02 and 04–05 need the raw sources listed in `data/README.md`.
+The core pipeline logic lives in the installable `dc_energy` package with a CLI:
+
+```bash
+dc-energy clean-workstation data/samples/workstation_may_aug_2021_raw_SAMPLE.csv -o ws.parquet
+dc-energy density data/processed/global_dc_counts_tidy.parquet data/processed/world_pop_long.parquet -o density.csv
+dc-energy anchors data/samples/workstation_2021_may_aug_tidy_SAMPLE.parquet
+dc-energy train data/samples/workstation_2021_may_aug_tidy_SAMPLE.parquet -o models/surrogate.txt
+```
+
+The notebooks (run in numerical order) document the full analysis narrative; notebooks 03 and 06–07 run against the bundled processed/sample data, while 01–02 and 04–05 need the raw sources listed in `data/README.md`.
 
 ## Author
 
