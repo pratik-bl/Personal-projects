@@ -23,3 +23,9 @@ desktop.ini
 # Secrets
 .env
 *.key
+
+# dbt / DuckDB artefacts
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+*.duckdb

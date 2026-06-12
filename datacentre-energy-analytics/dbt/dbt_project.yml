@@ -1,0 +1,14 @@
+name: dc_energy_dbt
+version: "1.0.0"
+profile: dc_energy
+
+model-paths: ["models"]
+target-path: target
+clean-targets: [target, dbt_packages]
+
+models:
+  dc_energy_dbt:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

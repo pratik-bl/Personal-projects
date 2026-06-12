@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: processed
+    description: Tidy tables produced by the dc_energy cleaning pipeline
+    meta:
+      external_location: "../data/processed/{name}.parquet"
+    tables:
+      - name: global_dc_counts_tidy
+        description: Country-level data-centre counts (Cloudscene scrape, Aug 2025)
+      - name: world_pop_long
+        description: World Bank population, long format
+      - name: ukpn_timeseries_tidy
+        description: UKPN data-centre half-hourly utilisation traces
+      - name: gdelt_sampled_filtered
+        description: GDELT articles on AI/cloud/data-centres with tone scores (2015-2025 sample)
+        meta:
+          external_location: "../data/processed/gdelt_sampled_filtered.csv"
+
+  - name: samples
+    meta:
+      external_location: "../data/samples/{name}.parquet"
+    tables:
+      - name: workstation_2021_may_aug_tidy_SAMPLE
+        description: Sampled 2021 workstation power telemetry

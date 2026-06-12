@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: mart_dc_density_by_country
+    description: Data centres per million population (2024) by country
+    columns:
+      - name: country
+        tests: [not_null, unique]
+      - name: dc_per_million
+        tests: [not_null]
+
+  - name: mart_ukpn_monthly_utilisation
+    description: Monthly mean/p95 utilisation per UKPN site type
+    columns:
+      - name: month
+        tests: [not_null]
+      - name: mean_utilisation
+        tests: [not_null]
+
+  - name: mart_sentiment_yearly
+    description: Yearly GDELT news tone for AI/cloud/data-centre coverage
+    columns:
+      - name: year
+        tests: [not_null, unique]
+      - name: mean_tone
+        tests: [not_null]
+
+  - name: mart_workstation_diurnal_power
+    description: Hour-of-day workstation power profile
+    columns:
+      - name: hour_of_day
+        tests: [not_null, unique]
+      - name: mean_power_w
+        tests: [not_null]

@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_dc_counts
+    columns:
+      - name: country
+        tests: [not_null, unique]
+      - name: dc_count
+        tests: [not_null]
+
+  - name: stg_population
+    columns:
+      - name: population
+        tests: [not_null]
+
+  - name: stg_ukpn_timeseries
+    columns:
+      - name: site_id
+        tests: [not_null]
+      - name: utilisation
+        tests: [not_null]
+
+  - name: stg_workstation
+    columns:
+      - name: power_w
+        tests: [not_null]

@@ -54,6 +54,7 @@ MSc dissertation project (University of Warwick, 2025) combining **web scraping,
 ```
 ├── src/dc_energy/    # Installable package: cleaners, density analysis, power anchors, LightGBM surrogate + CLI
 ├── tests/            # pytest suite (runs in CI against the bundled sample data)
+├── dbt/              # dbt + DuckDB transformation layer: staging views, tested marts, CSV exports for BI
 ├── notebooks/        # Ordered analysis pipeline (01 → 07)
 ├── data/
 │   ├── processed/    # Tidy Parquet tables produced by notebook 02 (full files)
@@ -115,6 +116,17 @@ dc-energy train data/samples/workstation_2021_may_aug_tidy_SAMPLE.parquet -o mod
 ```
 
 The notebooks (run in numerical order) document the full analysis narrative; notebooks 03 and 06–07 run against the bundled processed/sample data, while 01–02 and 04–05 need the raw sources listed in `data/README.md`.
+
+## Analytics layer (dbt + DuckDB)
+
+The analytical tables are also modelled as a [dbt](dbt/) project running on DuckDB — staging views over the parquet sources, four tested marts (DC density by country, UKPN monthly utilisation, yearly news sentiment, workstation diurnal power), and 18 schema tests, all executed in CI:
+
+```bash
+pip install dbt-duckdb
+cd dbt && DBT_PROFILES_DIR=. dbt build
+```
+
+Each mart is exported to `outputs/marts/*.csv`, ready to connect to Power BI / Tableau / Excel. See [`dbt/README.md`](dbt/README.md).
 
 ## Author
 

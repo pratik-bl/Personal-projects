@@ -24,7 +24,13 @@ jobs:
           cache: pip
 
       - name: Install package + test deps
-        run: pip install -e ".[ml,dev]"
+        run: pip install -e ".[ml,dev]" dbt-duckdb
 
       - name: Run tests
         run: pytest -v
+
+      - name: dbt build (DuckDB)
+        working-directory: datacentre-energy-analytics/dbt
+        env:
+          DBT_PROFILES_DIR: .
+        run: dbt build
