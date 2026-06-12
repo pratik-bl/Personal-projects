@@ -1,0 +1,25 @@
+# Large raw data & caches (see data/README.md for sources)
+gdelt_cache/
+*.gkg.csv.zip
+trainingandtestdata.zip
+training.1600000.processed.noemoticon.csv
+data/raw/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Secrets
+.env
+*.key
