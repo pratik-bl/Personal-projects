@@ -57,10 +57,21 @@ MSc dissertation project (University of Warwick, 2025) combining **web scraping,
 │   └── README.md     # Every data source, with download links & licensing notes
 ├── models/           # Tuned LightGBM surrogate model
 ├── outputs/          # Analysis outputs (UKPN utilisation profiles, DC density tables)
-├── figures/          # Static charts used in the write-up
+├── figures/          # All 30 write-up figures (analysis/) + notebook-extracted charts (notebooks/)
 ├── visualisations/   # Interactive HTML maps of global DC density per capita
 └── docs/             # Dissertation PDF + full set of analysis tables & figures
 ```
+
+## Selected figures
+
+| | |
+|---|---|
+| ![Data centres per million population, 2024](figures/analysis/fig_05.png) | ![Workstation sensor correlation heat-map](figures/analysis/fig_24.png) |
+| *Data centres per million population (2024)* | *Workstation sensor correlation heat-map* |
+| ![LightGBM SHAP feature importance](figures/analysis/fig_26.png) | ![UKPN diurnal demand profile](outputs/ukpn_utilisation/diurnal_overall.png) |
+| *LightGBM surrogate — SHAP feature importance* | *UKPN data-centre diurnal demand profile* |
+
+The full set of 30 analysis figures is in [`figures/analysis/`](figures/analysis/) (captions and accompanying tables in [`docs/analysis_visualisations_and_tables.docx`](docs/analysis_visualisations_and_tables.docx)); charts extracted from notebook runs are in [`figures/notebooks/`](figures/notebooks/). Interactive Plotly/EDA charts don't render as static images — they live in the notebooks and the HTML maps below.
 
 ## Interactive visualisations
 
