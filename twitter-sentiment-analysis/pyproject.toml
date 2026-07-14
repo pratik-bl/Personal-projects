@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "twitter-sentiment-semeval2017"
+version = "1.0.0"
+description = "Twitter sentiment classification on SemEval-2017 Task 4A: TF-IDF baselines vs GloVe-based LSTMs"
+authors = [{ name = "Pratik Bhala" }]
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scikit-learn>=1.3",
+    "nltk>=3.8",
+    "torch>=2.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
