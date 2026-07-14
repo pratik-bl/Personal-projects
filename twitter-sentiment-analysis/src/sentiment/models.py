@@ -93,4 +93,12 @@ class BiLSTMAttention(nn.Module):
         scores = scores.masked_fill(~mask, float("-inf"))
         weights = torch.softmax(scores, dim=1).unsqueeze(-1)  # (batch, seq, 1)
 
-        context = (lstm_out * weights).sum(dim=1)    
+        context = (lstm_out * weights).sum(dim=1)       # (batch, 2*hidden)
+        return self.fc(self.dropout(context))
+
+
+ARCHITECTURES = {
+    "lstm": LSTMSentiment,
+    "bilstm": BiLSTMSentiment,
+    "bilstm-attn": BiLSTMAttention,
+}
